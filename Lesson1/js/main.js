@@ -27,7 +27,6 @@ renderGoods(goods);
 
 
 //Second approach with insert elements
-
 let elem = document.querySelector('.goods-list');
 /**
  * @param {goods[]} goods goods array
