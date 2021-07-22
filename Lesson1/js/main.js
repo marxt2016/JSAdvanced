@@ -9,9 +9,9 @@ const goods = [
 const renderGood = (title = 'default', price = 100, img) => {
     return `<div class="goods-item">
                 <h3 >${title}</h3>
-                <p class="price">${price}</p>
-                <img src = ${img} alt =nice>
-                <button>Добавить</button>
+                <p class="price">$${price}</p>
+                <img src = ${img} alt='nice'>
+                <button>Add to cart</button>
               </div>`;
 }
 
@@ -27,7 +27,6 @@ renderGoods(goods);
 
 
 //Second approach with insert elements
-
 let elem = document.querySelector('.goods-list');
 /**
  * @param {goods[]} goods goods array
