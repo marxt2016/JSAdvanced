@@ -1,0 +1,117 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Lato;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+header {
+    position: relative;
+    margin: 1%;
+    border-top: solid 4px #a4a5a7;
+    background-color: #e9e9e9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 6px;
+}
+.goods-search {
+    border: none;
+    font-size: 17px;
+    border-radius: 6px;
+    outline: none;
+    margin: 1%;
+    padding: 1%;
+}
+
+.goods-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 1%;
+}
+.goods-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(56, 55, 55, 0.301);
+    min-width: 10em;
+    text-align: center;
+    color: #3f4041;
+    margin: 2%;
+    padding: 1%;
+}
+
+.price {
+    color: rgb(231, 125, 143);
+    font-size: 18px;
+    padding: 2%;
+}
+
+button {
+    font-size: 18px;
+    display: inline-block;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: #a4a5a7 0 1px 2px;
+    text-decoration: none;
+    text-align: center;
+    padding: 0.5em 0.5em;
+    border: 1px solid;
+    border-color: #999999 #919da7;
+    border-radius: 6px;
+    outline: none;
+    background: #9c9c9c;
+    margin: 0.5em;
+}
+
+button:hover {
+    opacity: 0.7;
+}
+.shoppingcart {
+    position: absolute;
+    background: white;
+    padding: 10px;
+    border: 1px solid #dadada;
+    border-radius: 3px;
+    right: 30px;
+    top: 65px;
+}
+.circle {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    color: white;
+    background: #615859;
+    border-radius: 50%;
+    position: relative;
+    text-align: center;
+    right: 5px;
+    top: -23px;
+    font-size: 10px;
+    line-height: 20px;
+}
+.none {
+    display: none;
+}
+.table_header {
+    font-weight: bold;
+}
+.table_row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #dadada;
+    padding-bottom: 5px;
+    text-align: center;
+}
+.total_cart {
+    text-align: end;
+    margin-right: 70px;
+}
