@@ -100,10 +100,13 @@ class ProductList {
     calculateSum() {
         return this.resultList.reduce((sum, item) => sum += item.price, 0);
     }
+
+    /**
+      * Search onkeyup
+      */
     filter() {
         let input = document.querySelector('.goods-search');
         let value = input.value.toLowerCase();
-        console.log(value);
         for (let i = 0; i < this.resultList.length; i++) {
             let producttxt = this.resultList[i].product_name;
             const block = document.querySelector(`.goods-item[data-id="${this.resultList[i].id_product}"]`);
