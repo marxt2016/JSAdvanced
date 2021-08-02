@@ -37,7 +37,7 @@ class Product {
        * creates markup for individual product items on the main page
        */
     renderGood() {
-        return `<div class="goods-item" >
+        return `<div class="goods-item" data-id ="${this.id_product}" >
                 <img src = ${this.img} alt='nice'>
                 <h3 >${this.product_name}</h3>
                 <p class="price">$${this.price}</p>
@@ -53,6 +53,7 @@ class ProductList {
     constructor() {
         this.incomingList = [];
         this.resultList = [];
+        this.filtered = [];
         this.totalPrice = 0;
         this.elem = document.querySelector('.goods-list');
         this.fetchGoods()
@@ -78,7 +79,7 @@ class ProductList {
     manageData(data) {
         this.incomingList = data;
         this.renderGoods();
-        //console.log(this.resultList);
+        console.log(this.resultList);
     }
 
     /**
@@ -98,6 +99,20 @@ class ProductList {
        */
     calculateSum() {
         return this.resultList.reduce((sum, item) => sum += item.price, 0);
+    }
+    filter() {
+        let input = document.querySelector('.goods-search');
+        let value = input.value.toLowerCase();
+        console.log(value);
+        for (let i = 0; i < this.resultList.length; i++) {
+            let producttxt = this.resultList[i].product_name;
+            const block = document.querySelector(`.goods-item[data-id="${this.resultList[i].id_product}"]`);
+            if (producttxt.toLowerCase().indexOf(value) > -1) {
+                block.classList.remove('none');
+            } else {
+                block.classList.add('none');
+            }
+        }
     }
 
 }
