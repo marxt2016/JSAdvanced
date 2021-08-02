@@ -15,7 +15,21 @@
     <body>
         <header>
             <input type="text" placeholder="Search.." class="goods-search">
-            <button type="button"><img src="img/cart.png"></button>
+            <button type="button" class="cart">
+                <img src="img/cart.png">
+                <span class="circle">0</span>
+            </button>
+            <div class="shoppingcart none">
+                <div class="table_header table_row">
+                    <div>Name</div>
+                    <div>Items</div>
+                    <div>Price</div>
+                    <div>Total per item</div>
+                </div>
+                <div class="total_cart">
+                    <div>Total $ <span class="counter_total">0</span></div>
+                </div>
+            </div>
         </header>
         <main>
             <div class="goods-list"></div>
