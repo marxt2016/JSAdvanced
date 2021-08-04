@@ -20,18 +20,26 @@ const app = new Vue({
                 })
         },
         addToCart(itemToAdd) {
-            console.log(itemToAdd);
             let itemInCart = this.cartItems.filter(item => item.id_product === itemToAdd.id_product);
             let isItemInCart = itemInCart.length > 0;
             if (!isItemInCart) {
                 this.cartItems.push({ ...itemToAdd, qty: 1 });
-                console.log(itemToAdd);
             } else {
-                console.log(itemInCart[0]);
                 itemInCart[0].qty++;
             }
             itemToAdd.qty = 1;
         },
+        deleteItem(itemToDelete) {
+            let itemInCart = this.cartItems.filter(item => item.id_product === itemToDelete.id_product);
+            console.log(itemInCart[0]);
+            if (itemInCart[0].qty > 1) {
+                itemInCart[0].qty--;
+            } else {
+                this.cartItems.splice(itemInCart[0], 1);
+            }
+
+
+        }
     },
 
     computed: {

@@ -42,7 +42,7 @@
                             <span class="total_price">$ {{ item.price*item.qty }}</span>
                         </div>
                         <td>
-                            <button class="trash"><i class="fa fa-trash"></i></button>
+                            <button class="trash" @click="deleteItem(item,id)"><i class="fa fa-trash"></i></button>
                         </td>
                     </div>
                     <div class="total_cart" v-if="totalPrice > 0">
