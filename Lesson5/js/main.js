@@ -37,8 +37,6 @@ const app = new Vue({
             } else {
                 this.cartItems.splice(itemInCart[0], 1);
             }
-
-
         }
     },
 

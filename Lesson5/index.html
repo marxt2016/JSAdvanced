@@ -30,7 +30,7 @@
                         <div>Total per item</div>
                         <div>Action</div>
                     </div>
-                    <div class="table_row" v-for="(item,id) in cartItems">
+                    <div class="table_row" v-for="(item) in cartItems">
                         <div>{{item.product_name}}</div>
                         <div>
                             <span class="items_quantity">{{item.qty}}</span>
@@ -42,7 +42,7 @@
                             <span class="total_price">$ {{ item.price*item.qty }}</span>
                         </div>
                         <td>
-                            <button class="trash" @click="deleteItem(item,id)"><i class="fa fa-trash"></i></button>
+                            <button class="trash" @click="deleteItem(item)"><i class="fa fa-trash"></i></button>
                         </td>
                     </div>
                     <div class="total_cart" v-if="totalPrice > 0">
