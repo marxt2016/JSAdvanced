@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<div class="container">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Интернет-магазин</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+
+    <body>
+        <div id="app">
+            <header>
+                <input type="text" v-model="searchLine" placeholder="Search.." class="goods-search">
+                <button type="button" class="cart" @click="show = !show">
+                    <img src="img/cart.png">
+                    <span class="circle">0</span>
+                </button>
+                <div class="shoppingcart" v-show="show">
+                    <div class="table_header table_row">
+                        <div>Name</div>
+                        <div>Items</div>
+                        <div>Price</div>
+                        <div>Total per item</div>
+                        <div>Action</div>
+                    </div>
+                    <div class="total_cart" v-if="Total > 0">
+                        <div>Total $ <span class="counter_total">{{Total}}</span></div>
+                    </div>
+                    <div class="total_cart" v-else>
+                        <tr>
+                            <td colspan="4">Cart is empty</td>
+                        </tr>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <div class="goodslist">
+                    <div class="goods-item" v-for="good of search" :key="good.id_product">
+                        <img :src="imgCatalog" alt='nice'>
+                        <h3>{{good.product_name}}</h3>
+                        <p class="price">${{good.price}}</p>
+                        <button class="to_cart" @click="addProduct(good)">Add to cart</button>
+                    </div>
+                </div>
+                <div class="total_cart" v-if="search.length===0">
+                    <tr>
+                        <td>Nothing found. Please change your search criteria</td>
+                    </tr>
+                </div>
+            </main>
+
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="./js/main.js"></script>
+    </body>
+
+</div>
+
+</html>
