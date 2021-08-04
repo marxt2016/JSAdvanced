@@ -5,7 +5,7 @@ const app = new Vue({
     el: '#app',
     data: {
         catalogUrl: '/catalogData.json',
-        goodslist: [],
+        goodsList: [],
         searchLine: '',
         show: false,
         imgCatalog: 'https://picsum.photos/100'
@@ -25,16 +25,14 @@ const app = new Vue({
 
     computed: {
         search() {
-            return this.goodslist.filter(good => {
+            return this.goodsList.filter(good => {
                 return good.product_name.toLowerCase().includes(this.searchLine.toLowerCase())
             });
         },
 
         Total() {
             let total = 0;
-            // this.items.forEach(item => {
-            //     total += (item.price * item.qty);
-            // });
+
             return total;
         },
 
@@ -43,7 +41,7 @@ const app = new Vue({
     created() {
         this.getJson(`${API + this.catalogUrl}`)
             .then(data => {
-                this.goodslist = data;
+                this.goodsList = data;
             });
     },
     // beforeCreated() {
