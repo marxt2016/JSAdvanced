@@ -20,7 +20,7 @@
                 <input type="text" v-model.trim="searchLine" placeholder="Search.." class="goods-search">
                 <button type="button" class="cart" @click="show = !show">
                     <img src="img/cart.png">
-                    <span class="circle">0</span>
+                    <span class="circle">{{totalQty}}</span>
                 </button>
                 <div class="shoppingcart" v-show="show">
                     <div class="table_header table_row">
@@ -30,8 +30,23 @@
                         <div>Total per item</div>
                         <div>Action</div>
                     </div>
-                    <div class="total_cart" v-if="Total > 0">
-                        <div>Total $ <span class="counter_total">{{Total}}</span></div>
+                    <div class="table_row" v-for="(item,id) in cartItems">
+                        <div>{{item.product_name}}</div>
+                        <div>
+                            <span class="items_quantity">{{item.qty}}</span>
+                        </div>
+                        <div>
+                            <span class="items_price">$ {{ item.price }}</span>
+                        </div>
+                        <div>
+                            <span class="total_price">$ {{ item.price*item.qty }}</span>
+                        </div>
+                        <td>
+                            <button class="trash"><i class="fa fa-trash"></i></button>
+                        </td>
+                    </div>
+                    <div class="total_cart" v-if="totalPrice > 0">
+                        <div>Total $ <span class="counter_total">{{totalPrice}}</span></div>
                     </div>
                     <div class="total_cart" v-else>
                         <tr>
@@ -46,7 +61,7 @@
                         <img :src="imgCatalog" alt='nice'>
                         <h3>{{good.product_name}}</h3>
                         <p class="price">${{good.price}}</p>
-                        <button class="to_cart" @click="addProduct(good)">Add to cart</button>
+                        <button class="to_cart" @click="addToCart(good)">Add to cart</button>
                     </div>
                 </div>
                 <div class="total_cart" v-if="search.length===0">

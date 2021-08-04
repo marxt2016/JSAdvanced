@@ -6,6 +6,7 @@ const app = new Vue({
     data: {
         catalogUrl: '/catalogData.json',
         goodsList: [],
+        cartItems: [],
         searchLine: '',
         show: false,
         imgCatalog: 'https://picsum.photos/100'
@@ -18,9 +19,19 @@ const app = new Vue({
                     console.log(error);
                 })
         },
-        addProduct(good) {
-            console.log(good);
-        }
+        addToCart(itemToAdd) {
+            console.log(itemToAdd);
+            let itemInCart = this.cartItems.filter(item => item.id_product === itemToAdd.id_product);
+            let isItemInCart = itemInCart.length > 0;
+            if (!isItemInCart) {
+                this.cartItems.push({ ...itemToAdd, qty: 1 });
+                console.log(itemToAdd);
+            } else {
+                console.log(itemInCart[0]);
+                itemInCart[0].qty++;
+            }
+            itemToAdd.qty = 1;
+        },
     },
 
     computed: {
@@ -30,9 +41,18 @@ const app = new Vue({
             });
         },
 
-        Total() {
+        totalPrice() {
+            let totalPrice = 0;
+            this.cartItems.forEach(item => {
+                totalPrice += (item.price * item.qty);
+            });
+            return totalPrice;
+        },
+        totalQty() {
             let total = 0;
-
+            this.cartItems.forEach(item => {
+                total += (item.qty);
+            });
             return total;
         },
 
