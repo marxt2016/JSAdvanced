@@ -1,4 +1,4 @@
-const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responsesр';
 
 const app = new Vue({
     el: '#app',
@@ -11,6 +11,7 @@ const app = new Vue({
                 .then(result => result.json())
                 .catch(error => {
                     console.log(error);
+                    this.$refs.error.setError();
                 })
         },
     },

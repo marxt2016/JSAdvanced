@@ -58,3 +58,20 @@ Vue.component('product', {
             </div>
     `
 });
+
+Vue.component('error', {
+    data() {
+        return {
+            message: "Some connection error happens, please refresh the page",
+            errorExists: false,
+        }
+    },
+    methods: {
+        setError() {
+            this.errorExists = true;
+        }
+    },
+    template: `
+        <div class="error" v-if="errorExists">{{message}}</div>
+        `
+});
