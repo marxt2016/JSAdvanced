@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
+        sans-serif;
+    font-size: 18px;
+    background-color: rgb(229, 247, 241);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: 30%;
+    margin: 3%;
+}
+.container {
+    background-color: rgb(255, 255, 255);
+    padding: 2%;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    width: 400px;
+}
+.form-field {
+    margin-bottom: 5px;
+}
+.form-field label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-field input {
+    border: solid 2px #f0f0f0;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+}
+
+.form-field input:focus {
+    outline: none;
+}
+.form-field.error input {
+    border-color: red;
+}
+.form-field.success input {
+    border-color: green;
+}
+
+.form-field error {
+    color: red;
+}
+/* button */
+.btn {
+    width: 100%;
+    padding: 3%;
+    color: rgb(19, 18, 18);
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: none;
+}
