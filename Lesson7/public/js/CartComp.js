@@ -23,26 +23,24 @@ Vue.component('cart', {
                     });
             }
         },
-        remove(item) {
-            this.$parent.getJson(`${API}/deleteFromBasket.json`)
+        remove(product) {
+            let find = this.cartItems.find(el => el.id_product === product.id_product);
+            if (find.quantity > 1) {
+                this.$parent.putJson(`/api/cart/${find.id_product}`, { quantity: 1 });
+                find.quantity--;
+            } else {
+                this.deleteAll(product)
+            }
+        },
+
+        deleteAll(product) {
+            let find = this.cartItems.find(el => el.id_product === product.id_product);
+            this.$parent.deleteJson(`/api/cart/${find.id_product}`, product)
                 .then(data => {
                     if (data.result === 1) {
-                        if (item.quantity > 1) {
-                            item.quantity--;
-                        } else {
-                            this.cartItems.splice(this.cartItems.indexOf(item), 1)
-                        }
+                        this.cartItems.splice(this.cartItems.indexOf(product), 1)
                     }
-                })
-        },
-        deleteAll(product) {
-            this.cartItems.splice(this.cartItems.indexOf(product), 1)
-            // this.$parent.deleteJson('/api/cart', find)
-            //     .then(data => {
-            //         if (data.result === 1) {
-            //             this.cartItems.push(prod);
-            //         }
-            //     });
+                });
         },
     },
     mounted() {
@@ -63,7 +61,7 @@ Vue.component('cart', {
                 :key="item.id_product"
                 :cart-item="item" 
                 :img="imgCart"
-                @remove="deleteAll">
+                @remove="remove">
                 </cart-item>
             </div>
         </div>`
